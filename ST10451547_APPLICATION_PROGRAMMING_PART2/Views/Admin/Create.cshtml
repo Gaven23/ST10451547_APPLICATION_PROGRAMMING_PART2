@@ -1,0 +1,119 @@
+﻿@model ST10451547_APPLICATION_PROGRAMMING_PART2.Data.Entities.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    .mt-100 {
+        width: 40%;
+        background: #00B4DB;
+        background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
+        background: linear-gradient(to right, #0083B0, #00B4DB);
+        color: red;
+    }
+
+</style>
+<link rel="stylesheet" href="/css/site.css">
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+<div class="col-12">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="section-title flex">
+            <div class="flex">
+                <p class="blu-title bold">Add User</p>
+
+            </div>
+        </div>
+        <div>
+
+            <div>
+                <select asp-for="RoleId" class="edit-input-tag " asp-items="ViewBag.RoleId" placeholder="" id="Role">
+
+                    <option value="" disabled selected>Role</option>
+                </select>
+            </div>
+            <span asp-validation-for="RoleId" class="text-danger"></span>
+            <br>
+
+            <input class="edit-input-tag " type="text" asp-for="Loginname" placeholder="Login Name" id="loginame">
+            <br>
+            <span asp-validation-for="Loginname" class="text-danger"></span>
+            <br>
+
+            <input class="edit-input-tag  " type="text" asp-for="Firstname" placeholder="Firstname" id="firstname">
+            <br>
+            <span asp-validation-for="Firstname" class="text-danger"></span>
+            <br>
+
+            <input class="edit-input-tag  " type="text" asp-for="Lastname" placeholder="Lastname">
+            <br>
+            <span asp-validation-for="Lastname" class="text-danger"></span>
+            <br>
+
+        
+            <input class="edit-input-tag  " type="text" asp-for="EmailAddress" placeholder="Email" id="emailaddress">
+            <br>
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            <br>
+        </div>
+
+        <div class="form-group" style="padding-top:20px">
+            <input id="submit" type="submit" value="Create" class="btn btn-success" />
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+            removeItemButton: true,
+            maxItemCount: 5,
+            searchResultLimit: 5,
+            renderChoiceLimit: 5
+        });
+
+    });
+    $(function () {
+        $("#submit").click(function () {
+            let Role = document.getElementById("Role").value;
+            let client = document.getElementById("client").value;
+            let gender = document.getElementById("gender").value;
+            let loginame = document.getElementById("loginame").value;
+            let firstname = document.getElementById("firstname").value;
+            let Lastname = document.getElementById("Lastname").value;
+            let emailaddress = document.getElementById("emailaddress").value;
+            if (Role == "" || Role == null) {
+                swal("Please select role for the user!", "", "error");
+                return false;
+            } else if (client == "" || client == null) {
+                swal("Please select client name!", "", "error");
+                return false;
+            } else if (gender == "" || gender == null) {
+                swal("Please select gender!", "", "error");
+                return false;
+            } else if (loginame == "" || loginame == null) {
+                swal("Data fields required", "", "error");
+                return false;
+            } else if (firstname == "" || firstname == null) {
+                swal("Data fields required", "", "error");
+                return false;
+            } else if (Lastname == "" || Lastname == null) {
+                swal("Data fields required", "", "error");
+                return false;
+
+            } else if (emailaddress == "" || emailaddress == null) {
+                swal("Data fields required", "", "error");
+                return false;
+            } else {
+                swal("Downlink data for device", Role + " is successfully set!", "success", {
+                    button: "Aww yiss!",
+                    timer: 2000
+                });
+            }
+
+        })
+    })
+</script>

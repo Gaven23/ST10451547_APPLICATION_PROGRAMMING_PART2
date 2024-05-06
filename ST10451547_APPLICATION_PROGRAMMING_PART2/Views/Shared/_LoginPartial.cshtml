@@ -1,0 +1,33 @@
+﻿ @using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor sessionAccessor;
+@{
+    int roleID = 0;             //  assume 0 in case of guest (before users has logged in)
+
+    if (Convert.ToInt32(sessionAccessor.HttpContext.Session.GetInt32("roleID")) > 0)
+    {
+        roleID = Convert.ToInt32(sessionAccessor.HttpContext.Session.GetInt32("roleID"));
+
+
+    }
+}
+
+<nav class="navbar navbar-expand-sm" style="background-color: #c80000">
+    <a class="navbar-brand" href="/"><img src="/images/Cathtect-Logo-400.png" height="70" alt="mdb logo" style="padding-left:20px"> </a>
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a id="manage" class="nav-link text-white" href="~/Login/SignOut/ " title="Sign Out">Hello @Context.Session.GetString("EmailAddress")! <span></span>   <i class="fa fa-sign-out" aria-hidden="true" style="font-size:24px"></i></a>
+                </li>
+                <li class="nav-item">
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

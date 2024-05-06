@@ -1,0 +1,210 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor sessionAccessor;
+@{
+    int roleID = 0; // assume 0 in case of guest (before users has logged in)
+
+    if (Convert.ToInt32(sessionAccessor.HttpContext.Session.GetInt32("roleID")) > 0)
+    {
+        roleID = Convert.ToInt32(sessionAccessor.HttpContext.Session.GetInt32("roleID"));
+
+
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ST10451547_APPLICATION_PROGRAMMING_PART2</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ST10451547_APPLICATION_PROGRAMMING_PART2.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <partial name="_LoginPartial" />
+    <div class="d-flex" style="width:100%;height: 100%;">
+
+        <div class="d-flex justify-content-start">
+            <nav id="sidebar" class="active" style="z-index:999">
+
+                <div class="custom-menu">
+                    <button type="button" id="sidebarCollapse" style="z-index:999" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+
+                        <span style="color:black"> </span>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h4>
+
+                        <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                            MPP
+                            LOGGERS
+                        </a>
+
+                    </h4>
+
+                    <ul class="list-unstyled components mb-5">
+                        <li class="active">
+                            <a href="/Admin/index/"><span class="fa fa-home mr-3"></span> Home</a>
+                        </li>
+
+
+
+                        @if (roleID == 2)
+                        {
+
+
+
+                            <li>
+                                <a href="/Devices/Index/"><span class="fa fa-sticky-note mr-3"></span> Devices</a>
+                            </li>
+
+
+                            <li>
+                                <a href="#"><span class="fa fa-file-excel-o mr-3"></span> Device Report</a>
+                            </li>
+                        }
+
+
+                        @if (roleID == 3)
+                        {
+
+                            <li>
+                                <a href="/Users/index/"> <span class="fa fa-user mr-3"></span> Users</a>
+                            </li>
+                            <li>
+                                <a href="/Devices/index/"><span class="fa fa-sticky-note mr-3"></span> Devices</a>
+                            </li>
+                            <li>
+                                <a href="/Downlinks/index/"><span class="fa fa-arrow-down mr-3"></span> Downlinks</a>
+                            </li>
+
+                            <li>
+                                <a href="/Clients/index/"><span class="fa fa-users mr-3"></span> Clients</a>
+                            </li>
+
+                            <li>
+                                <a href="/Downlinks/_create/"><span class="fa fa-arrow-down mr-3"></span> Set Downlinks</a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="logo">Reports</a>
+
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-file-excel-o mr-3"></span> Device Report</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-file-text mr-3"></span> Clients Reports</a>
+                            </li>
+                        }
+
+                        @if (roleID == 4)
+                        {
+
+                            <li>
+                                <a href="/Device/devicelist/"><span class="fa fa-sticky-note mr-3"></span> Devices</a>
+                            </li>
+
+                            <li>
+                                <a href="/Downlinks/_create/"><span class="fa fa-arrow-down mr-3"></span> Set Downlinks</a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="logo">Reports</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-file-excel-o mr-3"></span> Device Report</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-file-text mr-3"></span> Clients Reports</a>
+                            </li>
+                        }
+
+                        @if (roleID == 5)
+
+                        {
+
+                            <li>
+                                <a href="/Device/devicelist/"><span class="fa fa-sticky-note mr-3"></span> Devices</a>
+                            </li>
+                            <li>
+                                <a href="/Downlinks/_create/"><span class="fa fa-arrow-down mr-3"></span> Set Downlinks</a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="logo">Reports</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-file-excel-o mr-3"></span> Device Report</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-file-text mr-3"></span> Clients Reports</a>
+                            </li>
+                        }
+
+                        @if (roleID == 6)
+                        {
+
+                            <li>
+                                <a href="/Device/devicelist/"><span class="fa fa-sticky-note mr-3"></span> Devices</a>
+                            </li>
+
+
+                            <li>
+                                <a href="index.html" class="logo">Reports</a>
+                            </li>
+
+                            <li>
+                                <a href="#"><span class="fa fa-file-excel-o mr-3"></span> Device Report</a>
+                            </li>
+                        }
+                        <li>
+                            <a href="#"><span class="fa fa-file-excel-o mr-3"></span> Device Report</a>
+                        </li>
+
+                    </ul>
+
+                    @*<h4>
+                    <a href="index.html" class="logo">Reports</a>
+
+                    </h4>
+                    <ul class="list-unstyled components mb-5">
+
+                    <li>
+                    <a href="#"><span class="fa fa-file mr-3"></span> Accounts Report</a>
+                    </li>
+                    <li>
+                    <a href="#"><span class="fa fa-file-excel-o mr-3"></span> Device Report</a>
+                    </li>
+                    <li>
+                    <a href="#"><span class="fa fa-file-text mr-3"></span> Clients Reports</a>
+                    </li>
+
+
+                    </ul>*@
+                    <ul class="list-unstyled components mb-5">
+                    </ul>
+
+                </div>
+
+
+
+
+            </nav>
+        </div>
+        <div id="tbl" class="d-flex justify-content-end flex-grow-1" style="margin-left:5%">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - ST10451547_APPLICATION_PROGRAMMING_PART2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

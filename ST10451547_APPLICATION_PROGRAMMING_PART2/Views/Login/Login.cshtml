@@ -1,0 +1,110 @@
+﻿@{
+    Layout = null;
+}
+@model ST10451547_APPLICATION_PROGRAMMING_PART2.LoginViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Agri‐Energy Connect | Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="~/vendor/animate/animate.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="~/vendor/css-hamburgers/hamburgers.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="~/vendor/select2/select2.min.css"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="~/css/util.css"/>
+    <link rel="stylesheet" href="~/css/main.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link ref="stylesheet" href="~/css/site.css" />
+    <link ref="stylesheet" href="~/css/style.css" />
+    <link ref="stylesheet" href="~/css/tiny-slider.css" />
+
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                <img src="/images/ph_user-bold.png" class="img-fluid">
+
+
+                </div>
+
+                <hr>
+                <form asp-action="Login" class="form-container">
+                    <div class="sign-in-form text-center">
+                        <span class="login100-form-title">
+                            Member Login
+                        </span>
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            <input class="input100" placeholder="Username" name="Username" type="text">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+
+
+                        <div class="form-group wrap-input100 validate-input" data-validate="Password is required">
+                            <input class="input100" asp-for="Password" name="Password" placeholder="Enter Password" type="password" required="" id="myInput" />
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+
+                        </div>
+
+                        <div class="container-login100-form-btn">
+
+                            <button type="submit" class="login100-form-btn" style="border-bottom-color: rgba(255,255,255,0.6); background-color: #d83131;"><strong>Sign In</strong> <i class="fa fa-sign-in-alt "></i></button>
+                        </div>
+                        <div class="text-center p-t-12">
+                            <span class="txt1">
+                        
+                            </span>
+                            <a class="txt2" href="#">
+                                
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
+</body>
+</html>
